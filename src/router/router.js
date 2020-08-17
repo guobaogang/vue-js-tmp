@@ -50,7 +50,7 @@ router.beforeEach((to, from, next) => {
     } else if (token && to.name === LOGIN_PAGE_NAME) {
         // 已登录且要跳转的页面是登录页
         next({
-            name: 'Home' // 跳转到 index 页
+            name: 'home' // 跳转到 index 页
         })
     } else {
         if (token) {

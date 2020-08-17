@@ -2,7 +2,12 @@ export default {
     name: "home",
     data() {
         return {
-            pageName: "home",
+            pageName: "home"
         };
+    },
+    computed: {
+        name() {
+            return this.$store.getters.userName
+        }
     }
 };

@@ -1,6 +1,7 @@
 <template>
 <div class="login-wrap">
     {{pageName}}
+    Name: <input @change="nameChange" v-model="name">
     <button @click="login">login</button>
 </div>
 </template>

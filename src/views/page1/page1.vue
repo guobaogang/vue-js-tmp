@@ -1,5 +1,5 @@
 <template>
-<div class="page1-wrap">{{pageName}}</div>
+<div class="page1-wrap">{{pageName}}{{name}}</div>
 </template>
 
 <script src="./page1.js"></script>
