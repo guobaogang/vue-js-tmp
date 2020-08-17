@@ -25,7 +25,7 @@ const vueTmp = `<template>
 
 const jsTmp = `export default {
     name: "page1",
-    data: function (): Object {
+    data() {
         return {
             pageName: "page1",
         };

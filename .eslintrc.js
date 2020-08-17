@@ -6,19 +6,16 @@ module.exports = {
   parser: "vue-eslint-parser",
   extends: [
     "eslint:recommended",
-    "plugin:vue/essential",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:vue/essential"
   ],
   parserOptions: {
     ecmaVersion: 2017,
     parser: "babel-eslint",
     sourceType: "module",
   },
-  plugins: ["vue", "@typescript-eslint"],
+  plugins: ["vue"],
   rules: {
     "no-unused-vars": 1,
-    "@typescript-eslint/no-unused-vars": 1,
-
     //官方文档 http://eslint.org/docs/rules/
 
     //参数：0 关闭，1 警告，2 错误
