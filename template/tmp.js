@@ -24,10 +24,10 @@ const vueTmp = `<template>
 </style>`;
 
 const jsTmp = `export default {
-    name: "page1",
+    name: "${dirName}",
     data() {
         return {
-            pageName: "page1",
+            pageName: "${dirName}",
         };
     }
 };`;
@@ -36,8 +36,8 @@ const lessTmp = `.${dirName}-wrap{
     color: aqua;
 }`;
 
-fs.mkdirSync(`${basePath}/component/${dirName}`);
-process.chdir(`${basePath}/component/${dirName}`);
+fs.mkdirSync(`${basePath}/views/${dirName}`);
+process.chdir(`${basePath}/views/${dirName}`);
 fs.writeFileSync(`${dirName}.vue`, vueTmp);
 fs.writeFileSync(`${dirName}.js`, jsTmp);
 fs.writeFileSync(`${dirName}.less`, lessTmp);

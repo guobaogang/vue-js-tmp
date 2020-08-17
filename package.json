@@ -7,7 +7,7 @@
     "tmp": "node ./template/tmp.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server"
+    "dev": "webpack-dev-server"
   },
   "author": "guobaogang",
   "license": "ISC",
@@ -38,7 +38,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.3"
   },
   "husky": {
     "hooks": {
