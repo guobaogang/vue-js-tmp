@@ -3,7 +3,8 @@ import Router from 'vue-router';
 import Home from '@/views/home/home.vue';
 import Page1 from '@/views/page1/page1.vue';
 import { getToken } from '@/utils/token';
-import Login from '@/views/login/login.vue';
+import Login from '@/login/login.vue';
+import Lost from '@/views/lost/lost.vue';
 
 Vue.use(Router);
 
@@ -27,6 +28,11 @@ const router = new Router({
             path: '/page1',
             name: 'page1',
             component: Page1
+        },
+        {
+            path: '*',
+            name: 'lost',
+            component: Lost
         }
     ]
 });
@@ -50,7 +56,7 @@ router.beforeEach((to, from, next) => {
     } else if (token && to.name === LOGIN_PAGE_NAME) {
         // 已登录且要跳转的页面是登录页
         next({
-            name: 'home' // 跳转到 index 页
+            name: 'home' // 跳转到 home 页
         })
     } else {
         if (token) {

@@ -1,3 +1,4 @@
+import { mapGetters } from 'vuex';
 export default {
     name: "page1",
     data() {
@@ -6,8 +7,8 @@ export default {
         };
     },
     computed: {
-        name() {
-            return this.$store.getters.userName
-        }
+        ...mapGetters(
+            { name: 'userName' }
+        )
     }
 };

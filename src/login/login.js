@@ -1,4 +1,5 @@
-import { setToken } from "../../utils/token";
+import { setToken } from "@/utils/token";
+import { mapMutations } from "vuex";
 
 export default {
     name: "login",
@@ -9,12 +10,13 @@ export default {
         };
     },
     methods: {
+        ...mapMutations(['setName']),
         login() {
             setToken();
             this.$router.replace({ path: '/home' });
         },
         nameChange(event) {
-            this.$store.dispatch('setName', event.target.value);
+            this.setName(event.target.value);
         }
     }
 };

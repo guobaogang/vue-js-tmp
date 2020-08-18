@@ -2,6 +2,10 @@ export function getToken() {
     return sessionStorage.getItem('token');
 }
 
-export function setToken() {
-    sessionStorage.setItem('token', true);
+export function setToken(token) {
+    sessionStorage.setItem('token', token);
+}
+
+export function removeToken(){
+    sessionStorage.removeItem('removeItem')
 }
