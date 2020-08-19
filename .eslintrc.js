@@ -134,7 +134,7 @@ module.exports = {
 
     "block-scoped-var": 1,//变量应在外部上下文中声明，不应在{}代码块中
 
-    "consistent-return": 1,//函数返回值可能是不同类型
+    "consistent-return": 0,//函数返回值可能是不同类型
 
     "accessor-pairs": 1,//object getter/setter方法需要成对出现
 

@@ -36,9 +36,17 @@ module.exports = {
                 include: [path.resolve(__dirname, 'src')]
             },
             {
-                test: /\.less$/,
+                test: /\.(less|css)$/,
                 loader: 'style-loader!css-loader!less-loader'
             },
+            {
+                test: /\.(scss|sass)$/,
+                loader: 'style-loader!css-loader!sass-loader'
+            },
+            {
+                test: /\.(woff|svg|eot|ttf)\??.*$/,
+                loader: 'url-loader'
+            }        
         ],
     },
     plugins: [

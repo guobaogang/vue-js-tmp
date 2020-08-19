@@ -1,15 +1,15 @@
 {
-  "name": "vue-ts-tmp",
+  "name": "vue-js-tmp",
   "version": "0.0.1",
-  "description": "vue ts template",
+  "description": "vue js template",
   "main": "index.js",
   "scripts": {
     "tmp": "node ./template/tmp.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
     "dev": "webpack-dev-server",
-    "mock": "json-server --watch mock/mock.json",
-    "devs":"concurrently \"npm run dev\" \"npm run mock\""
+    "json": "json-server --watch mock/mock.json",
+    "mock": "concurrently \"npm run dev\" \"npm run json\""
   },
   "author": "guobaogang",
   "license": "ISC",
@@ -30,7 +30,10 @@
     "less": "^3.12.2",
     "less-loader": "^6.2.0",
     "lint-staged": "^10.2.11",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.3",
     "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
     "vue-eslint-parser": "^7.1.0",
     "vue-loader": "^15.9.3",
     "vue-style-loader": "^4.1.2",
@@ -41,6 +44,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "element-ui": "^2.13.2",
     "vue": "^2.6.11",
     "vue-router": "^3.4.3",
     "vuex": "^3.5.1"
