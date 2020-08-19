@@ -53,5 +53,15 @@ module.exports = {
         compress: true, // 是否使用gzip压缩
         port: 9000, // 端口号
         open: true, // 自动打开网页
+        inline: false,
+        proxy: {
+            "/api/*": {
+                "target": "http://localhost:3000",
+                "pathRewrite": {
+                    "^/api/*": "/posts/"
+                },
+                "method": "GET"
+            }
+        }
     },
 };

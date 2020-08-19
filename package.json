@@ -7,7 +7,9 @@
     "tmp": "node ./template/tmp.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "mock": "json-server --watch mock/mock.json",
+    "devs":"concurrently \"npm run dev\" \"npm run mock\""
   },
   "author": "guobaogang",
   "license": "ISC",

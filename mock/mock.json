@@ -1,0 +1,11 @@
+{
+    "posts": [
+        {
+            "id": "login",
+            "data": {
+                "token": "123222322"
+            },
+            "success": true
+        }
+    ]
+}
