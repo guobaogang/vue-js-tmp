@@ -1,8 +1,17 @@
 <template>
   <div class="home-wrap">
-    {{pageName}}
-    {{name}}
-    <router-link to="/page1">Go to Page1</router-link>
+    <el-container>
+      <el-header>
+        <my-header />
+      </el-header>
+      <el-container>
+        <el-aside width="200px">Aside</el-aside>
+        <el-container>
+          <el-main>Main</el-main>
+          <el-footer>Footer</el-footer>
+        </el-container>
+      </el-container>
+    </el-container>
   </div>
 </template>
 

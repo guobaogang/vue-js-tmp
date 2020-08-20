@@ -1,72 +1,70 @@
+import { setToken } from "@/utils/token";
+import { mapMutations } from "vuex";
+import ajax from '@/serve/api/ajax';
+
 export default {
     data() {
-      let checkAge = (rule, value, callback) => {
-        if (!value) {
-          return callback(new Error('年龄不能为空'));
-        }
-        setTimeout(() => {
-          if (!Number.isInteger(value)) {
-            callback(new Error('请输入数字值'));
-          } else {
-            if (value < 18) {
-              callback(new Error('必须年满18岁'));
-            } else {
-              callback();
+        let validateUserName = (rule, value, callback) => {
+            if (!value) {
+                return callback(new Error('用户名不能为空'));
             }
-          }
-        }, 1000);
-      };
-      let validatePass = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请输入密码'));
-        } else {
-          if (this.ruleForm.checkPass !== '') {
-            this.$refs.ruleForm.validateField('checkPass');
-          }
-          callback();
-        }
-      };
-      let validatePass2 = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请再次输入密码'));
-        } else if (value !== this.ruleForm.pass) {
-          callback(new Error('两次输入密码不一致!'));
-        } else {
-          callback();
-        }
-      };
-      return {
-        ruleForm: {
-          pass: '',
-          checkPass: '',
-          age: ''
-        },
-        rules: {
-          pass: [
-            { validator: validatePass, trigger: 'blur' }
-          ],
-          checkPass: [
-            { validator: validatePass2, trigger: 'blur' }
-          ],
-          age: [
-            { validator: checkAge, trigger: 'blur' }
-          ]
-        }
-      };
+            callback();
+        };
+        let validatePass = (rule, value, callback) => {
+            if (value === '') {
+                return callback(new Error('请输入密码'));
+            }
+            callback();
+        };
+        return {
+            ruleForm: {
+                userName: '',
+                pass: ''
+            },
+            rules: {
+                userName: [
+                    { validator: validateUserName, trigger: 'blur' }
+                ],
+                pass: [
+                    { validator: validatePass, trigger: 'blur' }
+                ]
+            }
+        };
     },
     methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      }
+        ...mapMutations(['setName']),
+        login() {
+            ajax({
+                url: '/api/login',
+                method: 'POST',
+                data: {
+                    userName: this.ruleForm.userName,
+                    password: this.ruleForm.pass
+                }
+            })
+                .then(res => {
+                    if (res.success) {
+                        setToken(res.data.token);
+                        this.$router.replace({ path: '/home' });
+                        this.setName(this.ruleForm.userName);
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        },
+        submitForm(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    this.login();
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
+        resetForm(formName) {
+            this.$refs[formName].resetFields();
+        }
     }
-  }
+}

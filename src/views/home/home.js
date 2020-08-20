@@ -1,4 +1,5 @@
 import { mapGetters } from 'vuex';
+import Header from '@/component/header/header.vue';
 
 export default {
     name: "home",
@@ -6,6 +7,9 @@ export default {
         return {
             pageName: "home"
         };
+    },
+    components:{
+        'my-header': Header
     },
     computed: {
         ...mapGetters(
