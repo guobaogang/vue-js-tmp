@@ -1,6 +1,6 @@
 <template>
   <div class="header-wrap">
-      
+      <div @click="logout">退出</div>
   </div>
 </template>
 

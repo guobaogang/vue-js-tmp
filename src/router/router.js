@@ -5,6 +5,7 @@ import Page1 from '@/views/page1/page1.vue';
 import { getToken } from '@/utils/token';
 import Login from '@/login/login.vue';
 import Lost from '@/views/lost/lost.vue';
+import Summary from '@/views/summary/summary.vue';
 
 Vue.use(Router);
 
@@ -17,7 +18,27 @@ const router = new Router({
         {
             path: '/home',
             name: 'home',
-            component: Home
+            component: Home,
+            redirect: '/home/summary',
+            children: [{
+                path: 'summary',
+                component: Summary
+            }, {
+                path: 'page1',
+                component: Page1
+            }, {
+                path: 'page2',
+                component: Page1
+            }, {
+                path: 'page3',
+                component: Page1
+            }, {
+                path: 'page4',
+                component: Page1
+            }, {
+                path: 'page5',
+                component: Page1
+            }]
         },
         {
             path: '/login',

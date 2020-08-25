@@ -7,5 +7,5 @@ export function setToken(token) {
 }
 
 export function removeToken(){
-    sessionStorage.removeItem('removeItem')
+    sessionStorage.removeItem('token')
 }

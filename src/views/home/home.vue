@@ -4,10 +4,14 @@
       <el-header>
         <my-header />
       </el-header>
-      <el-container>
-        <el-aside width="200px">Aside</el-aside>
+      <el-container class="main-container">
+        <el-aside width="auto">
+          <my-menu />
+        </el-aside>
         <el-container>
-          <el-main>Main</el-main>
+          <el-main>
+            <router-view></router-view>
+          </el-main>
           <el-footer>Footer</el-footer>
         </el-container>
       </el-container>
