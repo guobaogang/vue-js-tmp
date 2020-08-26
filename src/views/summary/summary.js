@@ -3,13 +3,12 @@ import {
     /* mapGetters */
 } from "vuex";
 import Content from '@/component/content/content.vue';
-import pageContent from './pageContent';
 
 export default {
     name: "my-summary",
     data() {
         return {
-            pageContent
+            pageContent: {}
         };
     },
     components: {
@@ -19,6 +18,14 @@ export default {
         ...mapMutations([])
     },
     computed: {
-        //...mapGetters()
+        //...mapGetters();
+        test() {
+            console.log('computed' + this.$route.params)
+        }
+    },
+    created() {
+        // eslint-disable-next-line no-undef
+        const context = require(`../../doc/${this.$route.params.id}.js`).default;
+        this.pageContent = context;
     }
 };

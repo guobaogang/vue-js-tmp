@@ -19,25 +19,10 @@ const router = new Router({
             path: '/home',
             name: 'home',
             component: Home,
-            redirect: '/home/summary',
+            redirect: '/home/summary/main',
             children: [{
-                path: 'summary',
+                path: 'summary/:id',
                 component: Summary
-            }, {
-                path: 'page1',
-                component: Page1
-            }, {
-                path: 'page2',
-                component: Page1
-            }, {
-                path: 'page3',
-                component: Page1
-            }, {
-                path: 'page4',
-                component: Page1
-            }, {
-                path: 'page5',
-                component: Page1
             }]
         },
         {

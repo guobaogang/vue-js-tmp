@@ -2,7 +2,12 @@ const menu_lists = [
     {
         title: '概述',
         index: '1',
-        route: '/home/summary'
+        route: '/home/summary/main'
+    },
+    {
+        title: '脚手架',
+        index: '2',
+        route: '/home/summary/cli'
     },
     {
         title: '分组一',
@@ -10,7 +15,7 @@ const menu_lists = [
         children: [
             {
                 title: '选项1',
-                route: '/home/page1',
+                route: { path: '/home/summary', query: { userId: "33333" } },
                 index: '1-1-1'
             },
             {
@@ -41,24 +46,6 @@ const menu_lists = [
                 index: '1-3-1'
             }
         ]
-    },
-    {
-        title: '导航二',
-        icon: 'el-icon-menu',
-        index: '2',
-        route: '/home/page5'
-    },
-    {
-        title: '导航三',
-        icon: 'el-icon-document',
-        index: '3',
-        route: '/home/page5'
-    },
-    {
-        title: '导航四',
-        icon: 'el-icon-setting',
-        index: '4',
-        route: '/home/page5'
     }
 ];
 

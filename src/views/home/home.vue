@@ -10,7 +10,7 @@
         </el-aside>
         <el-container>
           <el-main>
-            <router-view></router-view>
+            <router-view :key="$route.fullPath"></router-view>
           </el-main>
           <el-footer height="40">Footer</el-footer>
         </el-container>
