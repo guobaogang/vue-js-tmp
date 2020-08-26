@@ -2,7 +2,8 @@ const path = require('path');
 const fs = require('fs');
 const basePath = path.resolve(__dirname, '../src');
 const argName = process.argv[2];
-let dirPath = '', dirName = '';
+let dirPath = '',
+    dirName = '';
 
 if (!argName) {
     console.log('请输入组件名称');
@@ -22,7 +23,7 @@ if (argName.split('/').length > 1) {
     if (!fs.existsSync(dirName)) {
         dirArr.forEach((value, i) => {
             tmpPath = path.join(tmpPath, value);
-            if (!fs.existsSync(tmpPath)) {  //判断是否存在该目录
+            if (!fs.existsSync(tmpPath)) { //判断是否存在该目录
                 fs.mkdirSync(tmpPath)
             }
         })
@@ -57,6 +58,8 @@ export default {
             pageName: "${dirName}",
         };
     },
+    props: {},
+    components: {},
     methods: {
         ...mapMutations([])
     },
@@ -72,5 +75,7 @@ process.chdir(`${dirPath}`);
 fs.writeFileSync(`${dirName}.vue`, vueTmp);
 fs.writeFileSync(`${dirName}.js`, jsTmp);
 fs.writeFileSync(`${dirName}.less`, lessTmp);
+
+console.log(`${dirPath} 创建成功！`);
 
 process.exit(0);
