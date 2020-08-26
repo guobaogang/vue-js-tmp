@@ -2,12 +2,12 @@ const menu_lists = [
     {
         title: '概述',
         index: '1',
-        route: '/home/summary/main'
+        route: '/home/summary'
     },
     {
         title: '脚手架',
         index: '2',
-        route: '/home/summary/cli'
+        route: '/home/cli'
     },
     {
         title: '分组一',

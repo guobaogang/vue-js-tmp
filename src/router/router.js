@@ -5,7 +5,7 @@ import Page1 from '@/views/page1/page1.vue';
 import { getToken } from '@/utils/token';
 import Login from '@/login/login.vue';
 import Lost from '@/views/lost/lost.vue';
-import Summary from '@/views/summary/summary.vue';
+import RenderPage from '@/views/renderPage/renderPage.vue';
 
 Vue.use(Router);
 
@@ -19,10 +19,10 @@ const router = new Router({
             path: '/home',
             name: 'home',
             component: Home,
-            redirect: '/home/summary/main',
+            redirect: '/home/main',
             children: [{
-                path: 'summary/:id',
-                component: Summary
+                path: ':id',
+                component: RenderPage
             }]
         },
         {

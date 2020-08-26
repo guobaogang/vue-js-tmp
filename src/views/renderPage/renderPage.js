@@ -5,7 +5,7 @@ import {
 import Content from '@/component/content/content.vue';
 
 export default {
-    name: "my-summary",
+    name: "render-page",
     data() {
         return {
             pageContent: {}
