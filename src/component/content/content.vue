@@ -3,6 +3,9 @@
     <section class="content-doc">
       <div :class="'header level-'+level">{{content.title}}</div>
       <p v-html="content.desc"></p>
+      <pre v-if="content.code" v-highlight>
+        <code>{{content.code}}</code>
+      </pre>
       <content-item :level="2" :list="content.children" v-if="content.children"></content-item>
     </section>
   </div>

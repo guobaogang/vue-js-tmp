@@ -6,6 +6,7 @@
       <pre v-if="item.code" v-highlight>
         <code>{{item.code}}</code>
       </pre>
+      <img v-if="item.image" :src="item.image"/>
       <content-item :level="level+1>3?3:level+1" :list="item.children" v-if="item.children"></content-item>
     </div>
   </div>
@@ -13,6 +14,6 @@
 
 <script src="./contentItem.js"></script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "./contentItem.less";
 </style>

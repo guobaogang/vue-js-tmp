@@ -19,7 +19,7 @@ const router = new Router({
             path: '/home',
             name: 'home',
             component: Home,
-            redirect: '/home/main',
+            redirect: '/home/summary',
             children: [{
                 path: ':id',
                 component: RenderPage
@@ -40,7 +40,12 @@ const router = new Router({
             name: 'lost',
             component: Lost
         }
-    ]
+    ],
+    // eslint-disable-next-line no-unused-vars
+    scrollBehavior(to, from, savedPosition) {
+        console.log('scrollBehavior....')
+        return { x: 0, y: 0 }
+    }
 });
 
 // 登陆页面路由 name

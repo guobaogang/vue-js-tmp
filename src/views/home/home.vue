@@ -12,7 +12,7 @@
           <el-main>
             <router-view :key="$route.fullPath"></router-view>
           </el-main>
-          <el-footer height="40">Footer</el-footer>
+          <!-- <el-footer height="40">Footer</el-footer> -->
         </el-container>
       </el-container>
     </el-container>

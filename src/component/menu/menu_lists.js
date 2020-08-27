@@ -10,12 +10,12 @@ const menu_lists = [
         route: '/home/cli'
     },
     {
-        title: '分组一',
+        title: 'Vue',
         index: '1-1',
         children: [
             {
-                title: '选项1',
-                route: { path: '/home/summary', query: { userId: "33333" } },
+                title: 'Vue实例',
+                route: '/home/instance',
                 index: '1-1-1'
             },
             {
