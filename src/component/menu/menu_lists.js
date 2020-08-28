@@ -11,17 +11,22 @@ const menu_lists = [
     },
     {
         title: 'Vue',
-        index: '1-1',
+        index: '3',
         children: [
             {
                 title: 'Vue实例',
                 route: '/home/instance',
-                index: '1-1-1'
+                index: '3-1'
             },
             {
-                title: '选项2',
-                route: '/home/page2',
-                index: '1-1-2'
+                title: '模板语法',
+                route: '/home/syntax',
+                index: '3-2'
+            },
+            {
+                title: '计算属性和监听器',
+                route: '/home/computed',
+                index: '3-3'
             }
         ]
     },
