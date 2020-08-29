@@ -24,28 +24,26 @@ export default {
                 </li>        
             </ul>`,
             code: `
-            {
-                "name": "gbg-cli",
-                "version": "0.0.1",
-                "description": "",
-                "main": "index.js",
-                "scripts": {
-                  "test": "echo "Error: no test specified" && exit 1"
-                },
-                "bin": {
-                  "gbg": "./bin/gbg"
-                },
-                "author": "guobaogang",
-                "license": "ISC",
-                "dependencies": {
-                  "commander": "^6.0.0"
-                },
-                "repository": {
-                  "type": "git",
-                  "url": "https://github.com/guobaogang/gbg-cli.git"
-                }
-              }
-              
+    {
+        "name": "gbg-cli",
+        "version": "0.0.1",
+        "description": "",
+        "main": "index.js",
+        "scripts": {
+        },
+        "bin": {
+            "gbg": "./bin/gbg"
+        },
+        "author": "guobaogang",
+        "license": "ISC",
+        "dependencies": {
+            "commander": "^6.0.0"
+        },
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/guobaogang/gbg-cli.git"
+        }
+    }              
             `
         }, {
             title: '添加模板',
@@ -54,28 +52,28 @@ export default {
             title: '编写README文件',
             desc: `用户使用文件，介绍如何安装和使用，有哪些命令和功能等等`,
             code: `
-            ### GBG-CLI
+    ### GBG-CLI
 
-            Usage: gbg <command>
+    Usage: gbg <command>
 
-            Options:
-            -V, --version  output the version number
-            -h, --help     output usage information
+    Options:
+    -V, --version  output the version number
+    -h, --help     output usage information
 
-            Commands:
-            init|i         初始化
-            list|l         显示模板列表
-            \`\`\`
+    Commands:
+    init|i         初始化
+    list|l         显示模板列表
+    \`\`\`
 
-            ### install
+    ### install
 
-            \`\`\`
-            npm i ncchr -g
-            \`\`\`
+    \`\`\`
+    npm i ncchr -g
+    \`\`\`
 
-            ### ncchr i
+    ### ncchr i
 
-            > 运行\`ncchr i\`,输入项目名称和需要下载的模板
+    > 运行\`ncchr i\`,输入项目名称和需要下载的模板
             `
         }, {
             title: '配置bin',
@@ -83,38 +81,38 @@ export default {
             可以直接在文件中引用lib目录下的js文件，在lib目录中统一管理。<br>
             需要特别注意的是，文件头部的#!/usr/bin/env node --harmony是运行环境，不可缺少。`,
             code: `
-            #!/usr/bin/env node --harmony
+    #!/usr/bin/env node --harmony
 
-            require("../lib/index");
+    require("../lib/index");
             `
         }, {
             title: '编写脚本',
             desc: `执行node命令，需要用到最基础的插件<a target=_blank href=https://github.com/tj/commander.js>commander</a>,通过npm命令安装（下同）。先上代码,此代码为上文中引用的/lib/index.js`,
             code: `
-            const program = require('commander');
+    const program = require('commander');
 
-            program
-            .version(require('../package.json').version)
-            program
-                .usage('<command>')
-            program
-                .command('list')
-                .description('模板列表')
-                .alias('l')
-                .action(() => {
-                    require('../lib/list')()
-                })
-            program
-                .command('init')
-                .description('初始化')
-                .alias('i')
-                .action(() => {
-                    require('../lib/init')()
-                })
-            program.parse(process.argv)
-            if (!program.args.length) {
-                program.help()
-            }
+    program
+    .version(require('../package.json').version)
+    program
+        .usage('<command>')
+    program
+        .command('list')
+        .description('模板列表')
+        .alias('l')
+        .action(() => {
+            require('../lib/list')()
+        })
+    program
+        .command('init')
+        .description('初始化')
+        .alias('i')
+        .action(() => {
+            require('../lib/init')()
+        })
+    program.parse(process.argv)
+    if (!program.args.length) {
+        program.help()
+    }
             `
         }, {
             desc: `
@@ -149,84 +147,86 @@ export default {
                 创建问题可以通过<a href=https://www.npmjs.com/package/inquirer target=_blank>inquirer</a>组件来实现。
             `,
             code: `
-                const inquirer = require('inquirer');
+    const inquirer = require('inquirer');
 
-                createQuestion() {
-                    const questions = [
-                        {
-                            type: 'input',
-                            name: 'filename',
-                            message: '请输入要创建的文件名：',
-                            validate: function (value) {
-                                var filePath = value.match(/\\w+/);
-                                if (filePath) {
-                                    return true;
-                                }
-                                return '请输入正确的文件名称(数字文字下划线)';
-                            }
-                        },
-                        {
-                            type: 'rawlist',
-                            name: 'templName',
-                            message: '请选择模板?',
-                            choices: config
-                        },
-                        {
-                            type: 'rawlist',
-                            name: 'jsType',
-                            message: '请选择语言类型?',
-                            choices: ['javascript', 'typescript']
-                        },
-                    ];
-                    return inquirer.prompt(questions)
+    createQuestion() {
+        const questions = [
+            {
+                type: 'input',
+                name: 'filename',
+                message: '请输入要创建的文件名：',
+                validate: function (value) {
+                    var filePath = value.match(/\\w+/);
+                    if (filePath) {
+                        return true;
+                    }
+                    return '请输入正确的文件名称(数字文字下划线)';
                 }
-                
-                createQuestion().then(res => {
-                    let projectName = path.join(process.cwd(), res.filename)
-                    let templName = res.templName + '-' + (res.jsType === 'typescript' ? 'ts' : 'js')
-                    console.log('project info: ', res)
-                    copyTempl(projectName, templName)
-                })
+            },
+            {
+                type: 'rawlist',
+                name: 'templName',
+                message: '请选择模板?',
+                choices: config
+            },
+            {
+                type: 'rawlist',
+                name: 'jsType',
+                message: '请选择语言类型?',
+                choices: ['javascript', 'typescript']
+            },
+        ];
+        return inquirer.prompt(questions)
+    }
+    
+    createQuestion().then(res => {
+        let projectName = path.join(process.cwd(), res.filename)
+        let templName = res.templName + '-' + (res.jsType === 'typescript' ? 'ts' : 'js')
+        console.log('project info: ', res)
+        copyTempl(projectName, templName)
+    })
             `
         }, {
             title: '拷贝模板',
             desc: '确定了需要拷贝的模板之后，应用fs拷贝模板中的文件到项目目录中，即上文中的copyTempl方法。',
             code: `
-                copyTempl(name, templName = null) {
-                    let desPath = path.join(__dirname, '../template/' + templName)
-                    let desName = name
-                    this.copyDir(desPath, desName)
-                }
+    const fs = require('fs')
+    const path = require('path')
+    copyTempl(name, templName = null) {
+        let desPath = path.join(__dirname, '../template/' + templName)
+        let desName = name
+        this.copyDir(desPath, desName)
+    }
 
-                copyDir(src, dist, callback) {
-                    const oPath = path;
-                    const StaticPath = process.cwd();
-                    fs.access(dist, function (err) {
-                        if (err) {
-                            // 目录不存在时创建目录
-                            fs.mkdirSync(dist, { recursive: true });
-                        }
-                        _copy(null, src, dist);
-                    });
-            
-                    const _copy = (err, src, dist) => {
-                        if (err) {
-                            callback(err);
-                        } else {
-                            let dir = fs.readdirSync(src, 'utf-8');
-                            for (let j of dir) {
-                                var _src = src + '/' + j;
-                                var _dist = dist + '/' + j;
-                                let stat = fs.statSync(_src);
-                                if (stat.isDirectory()) {
-                                    this.copyDir(_src, _dist, callback);
-                                } else {
-                                    fs.writeFileSync(_dist, fs.readFileSync(_src, { encoding: 'utf-8' }));
-                                }
-                            }
-                        }
+    copyDir(src, dist, callback) {
+        const oPath = path;
+        const StaticPath = process.cwd();
+        fs.access(dist, function (err) {
+            if (err) {
+                // 目录不存在时创建目录
+                fs.mkdirSync(dist, { recursive: true });
+            }
+            _copy(null, src, dist);
+        });
+
+        const _copy = (err, src, dist) => {
+            if (err) {
+                callback(err);
+            } else {
+                let dir = fs.readdirSync(src, 'utf-8');
+                for (let j of dir) {
+                    var _src = src + '/' + j;
+                    var _dist = dist + '/' + j;
+                    let stat = fs.statSync(_src);
+                    if (stat.isDirectory()) {
+                        this.copyDir(_src, _dist, callback);
+                    } else {
+                        fs.writeFileSync(_dist, fs.readFileSync(_src, { encoding: 'utf-8' }));
                     }
                 }
+            }
+        }
+    }
             `
         }]
     }, {
@@ -243,14 +243,15 @@ export default {
                 title: '登录npm',
                 desc: '登录之前一定先检查npm是否配置了淘宝镜像，如果配置了需要先切换回来。',
                 code: `
-                //获取npm镜像配置
-                npm config get registry
-                //设置npm镜像
-                npm config set registry http://registry.npmjs.org/
-                //设置淘宝镜像
-                //npm config set registry https://registry.npm.taobao.org
-                //登录npm
-                npm login`
+    //获取npm镜像配置
+    npm config get registry
+    //设置npm镜像
+    npm config set registry http://registry.npmjs.org/
+    //设置淘宝镜像
+    //npm config set registry https://registry.npm.taobao.org
+    //登录npm
+    npm login
+    `
             },
             {
                 title: '上传',

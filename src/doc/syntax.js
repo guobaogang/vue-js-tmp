@@ -46,40 +46,40 @@ export default {
     }, {
         desc: '本节代码',
         code: `
-        <!DOCTYPE html>
-        <html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Vue模版语法</title>
-            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        </head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue模版语法</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
 
-        <body>
-            <div id="app">
-                <div>{{message}}</div>
-                <div v-text="message + ' 123'"></div>
-                <div v-html="message + ' 456'"></div>
-                <div :id="id" @click="onClick">click me</div>
-            </div>
-            <script>
-                var vm = new Vue({
-                    el: '#app',
-                    data: {
-                        message: '<h1>Hello World</h1>',
-                        id: '1'
-                    },
-                    methods: {
-                        onClick: function () {
-                            alert('click event')
-                        }
+    <body>
+        <div id="app">
+            <div>{{message}}</div>
+            <div v-text="message + ' 123'"></div>
+            <div v-html="message + ' 456'"></div>
+            <div :id="id" @click="onClick">click me</div>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    message: '<h1>Hello World</h1>',
+                    id: '1'
+                },
+                methods: {
+                    onClick: function () {
+                        alert('click event')
                     }
-                });
-            </script>
-        </body>
+                }
+            });
+        </script>
+    </body>
 
-        </html>
+    </html>
         `
     }]
 }

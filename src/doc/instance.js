@@ -56,63 +56,63 @@ export default {
         {
             title: '通过以下代码可以验证Vue实例的生命周期',
             code: `
-            <!DOCTYPE html>
-            <html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Vue生命周期</title>
-                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-            </head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue生命周期</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
 
-            <body>
-                <div id="app"></div>
-                <script>
-                    var vm = new Vue({
-                        el: '#app',
-                        template: '<div>{{message}}</div>',
-                        data: {
-                            message: 'Hello World'
-                        },
-                        beforeCreate: function () {
-                            console.log('beforeCreate...')
-                        },
-                        created: function () {
-                            console.log('created...')
-                        },
-                        beforeMount: function () {
-                            console.log(this.$el)
-                            console.log('beforeMount...')
-                        },
-                        mounted: function () {
-                            console.log('mounted...')
-                            console.log(this.$el)
-                        },
-                        beforeUpdate: function () {
-                            console.log('beforeUpdate...')
-                        },
-                        updated: function () {
-                            console.log('updated...')
-                        },
-                        beforeDestroy: function () {
-                            console.log('beforeDestroy...')
-                        },
-                        destroyed: function () {
-                            console.log('destroyed...')
-                        }
-                    });
+    <body>
+        <div id="app"></div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                template: '<div>{{message}}</div>',
+                data: {
+                    message: 'Hello World'
+                },
+                beforeCreate: function () {
+                    console.log('beforeCreate...')
+                },
+                created: function () {
+                    console.log('created...')
+                },
+                beforeMount: function () {
+                    console.log(this.$el)
+                    console.log('beforeMount...')
+                },
+                mounted: function () {
+                    console.log('mounted...')
+                    console.log(this.$el)
+                },
+                beforeUpdate: function () {
+                    console.log('beforeUpdate...')
+                },
+                updated: function () {
+                    console.log('updated...')
+                },
+                beforeDestroy: function () {
+                    console.log('beforeDestroy...')
+                },
+                destroyed: function () {
+                    console.log('destroyed...')
+                }
+            });
 
-                    setTimeout(function () {
-                        vm.$data.message = 'bye world'
-                    }, 2000);
-                    setTimeout(function () {
-                        vm.$destroy()
-                    }, 4000); 
-                </script>
-            </body>
+            setTimeout(function () {
+                vm.$data.message = 'bye world'
+            }, 2000);
+            setTimeout(function () {
+                vm.$destroy()
+            }, 4000); 
+        </script>
+    </body>
 
-            </html>
+    </html>
             `
         }
     ]
