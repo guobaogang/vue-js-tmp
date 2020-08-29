@@ -13,8 +13,8 @@ export default {
         `,
         children: [{
             title: '计算属性的缓存机制',
-            desc: `虽然计算属性和{{this.firstName + " " + this.lastName}}都可以实现显示fullName的效果，不同的是计算属性是基于它们的响应式依赖进行缓存的。<br>
-                既只有当计算属性依赖的firstName和lastName发生改变时才会重新计算,而插值表达试在任何数据改变时都会重新计算，当页面有性能开销比较大的计算属性时，可以避免多次无用的计算。
+            desc: `虽然计算属性和{{this.firstName + " " + this.lastName}}都可以实现显示fullName的效果，不同的是计算属性是基于它们的响应式依赖进行缓存的。
+            只有当计算属性依赖的firstName和lastName发生改变时才会重新计算,而插值表达式在任何数据改变时都会重新计算，当页面有性能开销比较大的计算属性时，可以避免多次无用的计算。
             `,
         }]
     }, {
