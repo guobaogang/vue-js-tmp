@@ -11,12 +11,32 @@ export default {
         }
     }
         `,
-        children: [{
-            title: '计算属性的缓存机制',
-            desc: `虽然计算属性和{{this.firstName + " " + this.lastName}}都可以实现显示fullName的效果，不同的是计算属性是基于它们的响应式依赖进行缓存的。
+        children: [
+            {
+                title: '计算属性的getter和setter',
+                desc: '使用上述方法计算属性只有getter方法，不过需要时也可以提供setter方法。',
+                code: `
+    computed: {
+        fullName: {
+            // getter
+            get: function () {
+                return this.firstName + ' ' + this.lastName
+            },
+            // setter
+            set: function (newValue) {
+                var names = newValue.split(' ')
+                this.firstName = names[0]
+                this.lastName = names[names.length - 1]
+            }
+        }
+    }        
+    `},
+            {
+                title: '计算属性的缓存机制',
+                desc: `虽然计算属性和{{this.firstName + " " + this.lastName}}都可以实现显示fullName的效果，不同的是计算属性是基于它们的响应式依赖进行缓存的。
             只有当计算属性依赖的firstName和lastName发生改变时才会重新计算,而插值表达式在任何数据改变时都会重新计算，当页面有性能开销比较大的计算属性时，可以避免多次无用的计算。
             `,
-        }]
+            }]
     }, {
         title: '侦听器',
         desc: `除此之外，还可以使用侦听器来处理，既可以监听firstName和lastName，如果任何一个值发生变化，则重新计算fullName。`,
@@ -51,6 +71,7 @@ export default {
         <div id="app">
             <div>{{fullName1}}</div>
             <div>{{fullName}}</div>
+            <div>{{fullName2}}</div>
         </div>
         <script>
             var vm = new Vue({
@@ -63,6 +84,18 @@ export default {
                 computed: {
                     fullName: function () {
                         return this.firstName + ' D ' + this.lastName
+                    },
+                    fullName2: {
+                        // getter
+                        get: function () {
+                            return this.firstName + ' ' + this.lastName
+                        },
+                        // setter
+                        set: function (newValue) {
+                            var names = newValue.split(' ')
+                            this.firstName = names[0]
+                            this.lastName = names[names.length - 1]
+                        }
                     }
                 },
                 watch: {
@@ -78,11 +111,15 @@ export default {
             setTimeout(function () {
                 vm.$data.lastName = 'Dragon'
             }, 2000)
+
+            setTimeout(function () {
+                vm.fullName2 = 'Nico Robin'
+            }, 4000)
         </script>
     </body>
 
     </html>
         `
     }
-]
+    ]
 }

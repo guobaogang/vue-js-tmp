@@ -27,6 +27,16 @@ const menu_lists = [
                 title: '计算属性和监听器',
                 route: '/home/computed',
                 index: '3-3'
+            },
+            {
+                title: 'Class 与 Style 绑定',
+                route: '/home/clzbind',
+                index: '3-3'
+            },
+            {
+                title: '条件渲染',
+                route: '/home/conditional',
+                index: '3-3'
             }
         ]
     },
