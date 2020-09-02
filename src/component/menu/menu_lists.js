@@ -31,12 +31,22 @@ const menu_lists = [
             {
                 title: 'Class 与 Style 绑定',
                 route: '/home/clzbind',
-                index: '3-3'
+                index: '3-4'
             },
             {
                 title: '条件渲染',
                 route: '/home/conditional',
-                index: '3-3'
+                index: '3-5'
+            },
+            {
+                title: '列表渲染',
+                route: '/home/list',
+                index: '3-6'
+            },
+            {
+                title: '事件处理',
+                route: '/home/events',
+                index: '3-7'
             }
         ]
     },
