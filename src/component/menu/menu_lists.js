@@ -47,6 +47,11 @@ const menu_lists = [
                 title: '事件处理',
                 route: '/home/events',
                 index: '3-7'
+            },
+            {
+                title: '表单输入绑定',
+                route: '/home/forms',
+                index: '3-8'
             }
         ]
     },
