@@ -52,6 +52,26 @@ const menu_lists = [
                 title: '表单输入绑定',
                 route: '/home/forms',
                 index: '3-8'
+            },
+            {
+                title: '组件基础',
+                route: '/home/components',
+                index: '3-9'
+            },
+            {
+                title: '父子组件传值',
+                route: '/home/passdata',
+                index: '3-10'
+            },
+            {
+                title: 'Prop',
+                route: '/home/prop',
+                index: '3-11'
+            },
+            {
+                title: '插槽',
+                route: '/home/slot',
+                index: '3-12'
             }
         ]
     },
